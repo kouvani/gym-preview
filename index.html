@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Gym App Preview</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  <meta name="theme-color" content="#8A1C2E">
+<link rel="icon" href="/gym-preview/favicon.ico"/><!-- pwa:start -->
+<link rel="manifest" href="/gym-preview/manifest.webmanifest" />
+<link rel="apple-touch-icon" sizes="180x180" href="/gym-preview/icons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/gym-preview/icons/icon-192.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Gym App" />
+<meta name="application-name" content="Gym App" />
+<meta name="format-detection" content="telephone=no" />
+<script>(function () {
+  var BASE = "/gym-preview";
+  // Chrome offers its install prompt before the app has loaded: keep it for the Install
+  // button on Today (apps/mobile/src/features/today/InstallTip.tsx).
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    window.__gymInstallPrompt = e;
+  });
+  window.addEventListener('appinstalled', function () { window.__gymInstallPrompt = null; });
+
+  var sw = navigator.serviceWorker;
+  if (!sw || location.pathname.indexOf(BASE + '/') !== 0) return;
+  var opened = Date.now();
+  var controlled = !!sw.controller;
+  var reloading = false;
+  // A new version took over: reload once onto it. The very first install needs no reload.
+  sw.addEventListener('controllerchange', function () {
+    if (!controlled) { controlled = true; return; }
+    if (reloading) return;
+    reloading = true;
+    location.reload();
+  });
+  // A downloaded update takes over only when that can't interrupt anything: in the first
+  // seconds after the app opens, or when the app goes to the background outside a workout.
+  function maybeActivate(reg) {
+    if (!reg.waiting || !sw.controller) return;
+    var justOpened = Date.now() - opened < 10000;
+    var away = document.visibilityState === 'hidden' && location.pathname.indexOf('/workout/') < 0;
+    if (justOpened || away) reg.waiting.postMessage('skip-waiting');
+  }
+  window.addEventListener('load', function () {
+    sw.register(BASE + '/sw.js', { scope: BASE + '/', updateViaCache: 'none' }).then(function (reg) {
+      maybeActivate(reg);
+      reg.addEventListener('updatefound', function () {
+        var next = reg.installing;
+        if (next) next.addEventListener('statechange', function () { if (next.state === 'installed') maybeActivate(reg); });
+      });
+      // Home-screen apps are often resumed rather than reopened: look for a new deploy when
+      // the app comes back to the front (at most every 10 minutes).
+      var checked = Date.now();
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') { maybeActivate(reg); return; }
+        if (Date.now() - checked > 600000) { checked = Date.now(); reg.update().catch(function () {}); }
+      });
+    }).catch(function () {});
+  });
+})();</script>
+<!-- pwa:end -->
+</head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/gym-preview/_expo/static/js/web/__expo-metro-runtime-97703ae02682710149335928b974f18d.js" defer></script><script src="/gym-preview/_expo/static/js/web/__common-d9ae1fad1258a32be69a6c5d791968fd.js" defer></script><script src="/gym-preview/_expo/static/js/web/entry-8f1677bed40ff72cf77ede9221a21053.js" defer></script>
+</body>
+</html>

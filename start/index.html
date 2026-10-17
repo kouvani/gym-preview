@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gym App: get stronger at your own pace</title>
+  <meta name="description" content="Strength training made for women 40+, new or coming back after a break. Take a 1-minute quiz and get a plan built around you.">
+  <!-- Preview: kept out of search results. Remove this line at launch if the page should be indexed. -->
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- META PIXEL: owner pastes here -->
+  <!--
+    Paste the Meta pixel base code from Events Manager (the whole <script> and <noscript> block)
+    on the line above. Then:
+      1. In quiz.js, call fbq(...) inside quizStarted() and quizCompleted(); both are marked.
+      2. Update the privacy line in the footer: once the pixel is in, "sets no cookies" is no longer true.
+  -->
+
+  <script src="quiz.js" defer></script>
+</head>
+<body>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Gym App home">
+      <img src="assets/icon.svg" alt="" width="32" height="32">
+      <span>Gym App</span>
+    </a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h1 id="hero-title">Get stronger at your own pace.</h1>
+        <p class="lede">Strength training made for women 40+, whether you're brand new or coming back after a break. Answer four quick questions and get a plan built around you.</p>
+        <!-- Without JavaScript the button simply opens the app. -->
+        <a class="btn btn-primary" href="../" data-quiz-open>Take the 1-minute quiz</a>
+        <p class="hero-note">Free to start. No account needed.</p>
+      </div>
+      <figure class="hero-photo">
+        <!--
+          PHOTO: replace the src with the owner's photo of a real 40+ woman training
+          (a real customer or coach, never stock or AI). Save it as assets/hero.jpg,
+          about 1200 x 1500 px, under 120 KB, and write a plain alt text describing her.
+        -->
+        <img src="assets/photo-placeholder.svg" width="800" height="1000"
+             alt="Placeholder for the owner's photo of a real 40+ woman training">
+      </figure>
+    </section>
+
+    <section class="proof wrap" aria-label="What you get">
+      <ul class="proof-list">
+        <li>
+          <h2 class="h3">A plan made for you</h2>
+          <p>Built from your answers: where you train, what you've done before and how many days you have.</p>
+        </li>
+        <li>
+          <h2 class="h3">Warm-up and easier options built in</h2>
+          <p>Every session starts with a warm-up, and each move has an easier option for the days you want one.</p>
+        </li>
+        <li>
+          <h2 class="h3">Your workouts stay safe</h2>
+          <p>Every workout saves on your phone as you go, even with no signal. Turn on backup and a copy is kept in your account too.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="steps wrap" aria-labelledby="steps-title">
+      <h2 id="steps-title">How it works</h2>
+      <ol class="step-list">
+        <li>
+          <span class="step-num" aria-hidden="true">1</span>
+          <div>
+            <h3>Take the quiz</h3>
+            <p>Four quick questions about where you'll train, what you've done before and how often you'd like to go.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">2</span>
+          <div>
+            <h3>Get your plan</h3>
+            <p>Your answers pick your plan and set where you start. Nothing to work out on your own.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">3</span>
+          <div>
+            <h3>Train at your own pace</h3>
+            <p>Open today's workout, follow along and tap to log each set. Rest as long as you need.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="money wrap" aria-labelledby="money-title">
+      <div class="money-panel">
+        <h2 id="money-title">About money</h2>
+        <!-- No prices yet. Keep every line here true when pricing is added. -->
+        <ul class="money-list">
+          <li><strong>Free to start.</strong> Try your plan and log your workouts without paying or adding a card.</li>
+          <li><strong>No surprise charges.</strong> If anything ever costs money, you'll see the price first and decide.</li>
+          <li><strong>Cancel any time.</strong> Stop whenever you like, no questions asked.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="faq wrap" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Do I need a gym?</summary>
+          <p>No. Pick gym, dumbbells at home or no equipment at all, and your plan is built around what you have.</p>
+        </details>
+        <details>
+          <summary>I haven't exercised in years. Is this for me?</summary>
+          <p>Yes. If you're new or coming back after a break, your plan starts gently: a warm-up every session, a few simple moves to learn first, and an easier option whenever you want one.</p>
+        </details>
+        <details>
+          <summary>How long is each workout?</summary>
+          <p>You choose 30, 45 or 60 minutes when you set up the app. That time includes your warm-up.</p>
+        </details>
+        <details>
+          <summary>What if a move doesn't feel right?</summary>
+          <p>Each exercise lists easier options. Move within a range that feels comfortable and pick an easier one whenever you like. This is general fitness guidance, not medical advice. If you're unsure whether exercise is right for you, check with a doctor or physiotherapist first.</p>
+        </details>
+        <details>
+          <summary>Do I need to download anything?</summary>
+          <p>No. It opens in your phone's web browser. If you like, you can add it to your home screen and open it like any other app.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="closing wrap" aria-labelledby="closing-title">
+      <h2 id="closing-title">Four questions and your plan is ready.</h2>
+      <a class="btn btn-primary" href="../" data-quiz-open>Take the 1-minute quiz</a>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p class="footer-brand">
+      <img src="assets/icon.svg" alt="" width="24" height="24">
+      <span>Gym App</span>
+      <span class="tag">Preview</span>
+    </p>
+    <p>Gym App is a working name. This is a preview, not the finished app.</p>
+    <!--
+      PRIVACY: owner replaces this line with a link to the privacy policy before ads run.
+      It stops being true as soon as the Meta pixel (or any other tracking) is added.
+    -->
+    <p>Privacy: this page sets no cookies and doesn't send your quiz answers anywhere. They only go into the link that opens the app.</p>
+    <p>General fitness guidance, not medical advice.</p>
+  </footer>
+
+  <dialog class="quiz" id="quiz" aria-labelledby="quiz-heading">
+    <div class="quiz-inner">
+      <div class="quiz-bar">
+        <button type="button" class="quiz-nav" data-quiz-back>Back</button>
+        <div class="quiz-progress">
+          <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1">
+            <div class="progress-fill"></div>
+          </div>
+          <p class="progress-text" aria-hidden="true"></p>
+        </div>
+        <button type="button" class="quiz-nav quiz-close" data-quiz-close aria-label="Close the quiz">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="quiz-stage"></div>
+    </div>
+  </dialog>
+</body>
+</html>
